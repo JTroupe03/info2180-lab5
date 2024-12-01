@@ -16,7 +16,31 @@ $results = $country_1->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <ul>
-<?php foreach ($results as $row): ?>
+<!--<?php foreach ($results as $row): ?>
   <li><?= $row['name'] . ' is ruled by ' . $row['head_of_state']; ?></li>
 <?php endforeach; ?>
-</ul>
+</ul> -->
+
+<?php if(isset($country)):?>
+  <table class = "display">
+      <caption><h2>ADDITIONAL COUNTRY INFORMATION<h2></caption>
+    <thead>
+      <tr>
+          <th class = "mth1">Country Name</th>
+          <th class = "mth2">Continent</th>
+          <th class = "mth3">Year of Independence</th>
+          <th class = "mth4">Head of State</th>
+      </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($results as $country): ?>
+          <tr>
+            <td><?php echo $country["name"]; ?></td>
+            <td><?php echo $country["continent"]; ?></td>
+            <td><?php echo $country["independence_year"]; ?></td>
+            <td><?php echo $country["head_of_state"]; ?></td>
+          </tr>
+        <?php endforeach; ?>
+    </tbody>
+  </table>
+<?php endif; ?>
